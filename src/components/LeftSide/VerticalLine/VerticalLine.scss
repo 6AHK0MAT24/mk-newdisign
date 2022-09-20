@@ -1,0 +1,17 @@
+.vertLine {
+  width: 24px;
+  height: 402px;
+  position: absolute;
+  left: 112px;
+  top: 48px;
+  //background: linear-gradient(#FFFFFF, #F7BFDA, #F7BFDA, #F7BFDA, #F7BFDA, #F7BFDA, #F7BFDA, #FFFFFF); //pink
+  background: linear-gradient(#FFFFFF, #B6DCF1, #B6DCF1, #B6DCF1, #B6DCF1, #B6DCF1, #B6DCF1, #FFFFFF); //blue
+  z-index: 900;
+}
+.blue-arrow{
+  position: fixed;
+  top: 438px;
+  width: 16px;
+  left: 116px;
+  z-index: 1200;
+}

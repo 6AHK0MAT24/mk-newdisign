@@ -1,0 +1,57 @@
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansBold.ttf");
+  font-family: 'MoscowSansBold';
+  font-weight: 700;
+}
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansRegular.ttf");
+  font-family: 'MoscowSansRegular';
+  font-weight: 700;
+}
+
+
+.bottomInfo {
+  display: flex;
+  align-items: center;
+  width: 960px;
+  height: 88px;
+  background-color: #F3F1F1;
+  bottom: 0;
+  flex: 0 1 auto;
+}
+
+.tripId {
+  font-family: MoscowSansBold, serif;
+  font-size: 40px;
+  justify-content: center;
+  line-height: 40px;
+  align-items: center;
+  margin-left: 24px;
+  width: 106px;
+  height: 44px;
+  //background-color: #F7BFDA; //pink
+  background-color: #B6DCF1; //blue
+}
+
+.tripIdText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+}
+
+.metroIcon{
+  width: 32px;
+}
+
+.numberIcon {
+  width: 26px;
+  margin-left: 9px;
+  margin-right: 9px;
+}
+
+.stopInfo {
+  margin-left: 22px;
+  position: sticky;
+  margin-top: 10px;
+}

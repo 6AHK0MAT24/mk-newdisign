@@ -1,0 +1,70 @@
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansBold.ttf");
+  font-family: 'MoscowSansBold';
+  font-weight: 700;
+}
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansRegular.ttf");
+  font-family: 'MoscowSansRegular';
+  font-weight: 700;
+}
+
+.mainTrip {
+  margin-top: 0;
+  top: 0;
+}
+
+.tripInfo {
+  display: flex;
+  align-items: center;
+  font-family: MoscowSansRegular, serif;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  padding-top: 16px;
+}
+.activeStop {
+  //background-color: #F7BFDA; //pink
+  background-color: #B6DCF1; //blue
+}
+
+.timeInfo {
+  margin-left: 16px;
+}
+
+.roundPoint {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background-color: white;
+  left: 116px;
+  position: absolute;
+  z-index: 1100;
+}
+
+.textStop {
+  width: 768px;
+  height: 80px;
+  left: 152px;
+  position: sticky;
+}
+
+.ruTextStop {
+  font-family: MoscowSansBold, serif;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 34px;
+  margin-top: 8px;
+  margin-left: 8px;
+  height: 0;
+}
+
+.enTextStop {
+  font-family: MoscowSansRegular, serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  color: #6D535C;
+  margin-top: 8px;
+  margin-left: 8px
+}

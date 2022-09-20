@@ -1,0 +1,19 @@
+html,
+body {
+  height: 540px;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+
+  min-height: 100%;
+}
+
+
+.App {
+  display: flex;
+}

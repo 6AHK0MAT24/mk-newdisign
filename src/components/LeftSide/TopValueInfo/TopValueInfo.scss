@@ -1,0 +1,39 @@
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansBold.ttf");
+  font-family: 'MoscowSansBold';
+  font-weight: 700;
+}
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansRegular.ttf");
+  font-family: 'MoscowSansRegular';
+  font-weight: 700;
+}
+
+
+.topInfo {
+  display: flex;
+  background-color: #F3F1F1;
+  width: 100%;
+  height: 48px;
+  font-family: MoscowSansRegular, serif;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 300;
+  align-items: center;
+  z-index: 1000;
+}
+.topTime {
+  margin-left: 88px;
+}
+
+.topDate {
+  margin-left: 77px;
+}
+
+.topSpeed {
+  margin-left: 77px;
+}
+
+.topTemp {
+  margin-left: 77px;
+}

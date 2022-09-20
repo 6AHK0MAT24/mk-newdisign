@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import LeftSide from "./components/LeftSide/LeftSide";
+import RightSide from "./components/RightSide/RightSide";
+import './App.scss';
+
+const ws = new WebSocket('ws://192.168.100.225:23245')
+
+// let recievedData: any = null
 
 function App() {
+    const [messages, setMessages] = useState([])
+    useEffect(() => {
+        ws.addEventListener('message', (e)=>{
+            // recievedData = JSON.parse((e.data))
+            setMessages(JSON.parse((e.data)))
+        })
+    }, [])
+    // console.log('messages', messages)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LeftSide data = {messages} />
+      <RightSide />
     </div>
   );
 }
