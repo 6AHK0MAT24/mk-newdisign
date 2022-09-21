@@ -9,52 +9,37 @@
   font-weight: 700;
 }
 
-
-.bottomInfo {
-  display: flex;
-  align-items: center;
-  width: 960px;
-  height: 88px;
-  background-color: #F3F1F1;
-  bottom: 0;
-  flex: 0 1 auto;
-}
-
-.tripId {
+.nere-caption{
   font-family: MoscowSansBold, serif;
-  font-size: 40px;
-  justify-content: center;
-  line-height: 40px;
-  align-items: center;
-  margin-left: 24px;
-  width: 106px;
-  height: 44px;
-  //background-color: #F7BFDA; //pink
-  background-color: #B6DCF1; //blue
+  top: 144px;
+  left: 24px;
+  font-size: 28px;
+  color: #666B6E;
+  position: absolute;
 }
 
-.tripIdText {
+.mainNere {
+  position: absolute;
+  margin-top: 0;
+  top: 165px;
+}
+
+.nereInfo {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 2px;
+  font-family: MoscowSansRegular, serif;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  padding-top: 16px;
 }
 
-.metroIcon{
-  width: 32px;
+.icoNereInfo {
+  margin-left: 24px;
+  width: 48px;
+  height: 48px;
 }
 
-.numberIcon {
-  width: 26px;
-  margin-left: 9px;
-  margin-right: 9px;
-}
-
-.stopInfo {
-  margin-left: 22px;
-  position: sticky;
-  margin-top: 10px;
-}
 
 .textInfo {
   width: 850px;

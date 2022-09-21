@@ -1,0 +1,75 @@
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansBold.ttf");
+  font-family: 'MoscowSansBold';
+  font-weight: 700;
+}
+@font-face {
+  src: url("../../../assets/fonts/MoscowFonts/MoscowSansRegular.ttf");
+  font-family: 'MoscowSansRegular';
+  font-weight: 700;
+}
+
+.nere-caption{
+  font-family: MoscowSansBold, serif;
+  top: 144px;
+  left: 24px;
+  font-size: 28px;
+  color: #666B6E;
+  position: absolute;
+}
+
+.mainNere {
+  position: absolute;
+  margin-top: 0;
+  top: 165px;
+}
+
+.nereInfo {
+  display: flex;
+  align-items: center;
+  font-family: MoscowSansRegular, serif;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  padding-top: 16px;
+}
+
+.icoBus {
+  margin-left: 24px;
+}
+.icoBusBG{
+  width: 40px;
+}
+
+.transferTrl {
+  margin-left: 8px;
+  background-color: #B6DCF1;
+  min-width: 60px;
+  height: 34px;
+  font-family: MoscowSansRegular, serif;
+  font-size: 40px;
+  padding: 10px 4px 0 4px;
+  text-align: center;
+}
+.transferTrm {
+  margin-left: 8px;
+  background-color: #495056;
+  min-width: 60px;
+  height: 34px;
+  font-family: MoscowSansRegular, serif;
+  font-size: 40px;
+  padding: 10px 4px 0 4px;
+  color: white;
+  text-align: center;
+}
+.transferAvt {
+  margin-left: 8px;
+  background-color: #F5BDD8;
+  width: auto;
+  height: 34px;
+  font-family: MoscowSansRegular, serif;
+  font-size: 40px;
+  padding: 10px 4px 0 4px;
+  text-align: center;
+}
+
