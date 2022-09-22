@@ -15,7 +15,6 @@ function App() {
             setMessages(JSON.parse((e.data)))
         })
     }, [])
-    // console.log('messages', messages)
     useEffect(()=> {
         handle.enter
     }, [])
