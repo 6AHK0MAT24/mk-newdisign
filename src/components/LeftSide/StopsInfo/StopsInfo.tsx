@@ -3,7 +3,8 @@ import './StopsInfo.scss'
 import { ROUTE, STOP_TIMES } from '../../../mockData/STOP_TIMES'
 
 
-const StopsInfo: React.FC<any> = () => {
+const StopsInfo: React.FC<any> = (routeInfo) => {
+
 
     ROUTE.stops.map((item: { index: any }) => {
         // console.log(item.index)
