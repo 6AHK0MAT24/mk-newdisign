@@ -1,27 +1,31 @@
 export const STOP_TIMES: any = {
-        "type": "STOP_TIMES",
-        "stops": [
-            {
-                "index": 4,
-                "time": 64
-            },
-            {
-                "index": 6,
-                "time": 0
-            },
-            {
-                "index": 5,
-                "time": 64
-            },
-            {
-                "index": 3,
-                "time": 64
-            },
-            {
-                "index": 2,
-                "time": 64
-            }
-        ]
+    "type":"STOP_TIMES",
+    "stops":[
+        {
+            "index":4,
+            "time":5
+        },
+        {
+            "index":6,
+            "time":13
+        },
+        {
+            "index":5,
+            "time":27
+        },
+        {
+            "index":3,
+            "time":0
+        },
+        {
+            "index":2,
+            "time":0
+        },
+        {
+            "index":1,
+            "time":0
+        }
+    ]
 }
 
 export const ROUTE: any = {
