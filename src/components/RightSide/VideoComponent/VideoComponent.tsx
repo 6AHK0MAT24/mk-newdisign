@@ -5,9 +5,9 @@ import './VideoComponent.scss'
 // let mockurlToPlay = 'http://192.168.100.225:8080/sdcard/content/video/advertise/vid-1663921713042.mp4'
 
 const VideoComponent: React.FC<any> = (data) => {
-    const [urlForPlay, setUrlForPlay] = useState('http://192.168.100.225:8080/sdcard/content/video/advertise/vid-1663921713042.mp4')
+    const [urlForPlay, setUrlForPlay] = useState('http://194.85.217.98:8080/sdcard/content/video/showing_plan/vid-1661853390265_temp.mp4')
     // console.log('data in video - ', data.videoData.videoForPlay.src )
-    const urlToPlay = `http://192.168.100.225:8080` + data.videoData.videoForPlay.src
+    const urlToPlay = `http://194.85.217.98:8080` + data.videoData.videoForPlay.src
     // if ( true) {
     //     setUrlForPlay(urlToPlay)
     // }
