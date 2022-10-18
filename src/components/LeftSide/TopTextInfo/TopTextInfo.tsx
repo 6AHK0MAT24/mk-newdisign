@@ -22,14 +22,14 @@ const TopTextInfo: React.FC<any> = (routeInfo) => {
                 style={{backgroundColor: `${routeInfo.color}` }}
                     // style={{backgroundColor: item.index === 0 ? "red" : "white"}} Подключение цвета возможно через инлайн стили когдад будут приходить данные
                 >
-                    {currentStop.iconsBefore.map((srcIcon: any, i:number) =>
+                    {currentStop.iconsBefore.map((srcIcon: any) =>
                         <div className='icoBus icoMock' key={nanoid()}>
                             <img src={`http://${GLOBAL_URL}:8080${srcIcon}`} alt='nere-shop-ico'/>
                         </div>
                     )}
                     <p className='ruBigText'>{currentStop.nameRus}</p>
                     <p className='enBigText'>{currentStop.nameEng}</p>
-                    {currentStop.iconsAfter.map((srcIcon: any, i:number) =>
+                    {currentStop.iconsAfter.map((srcIcon: any) =>
                         <div className='icoBus icoMock' key={nanoid()}>
                             <img src={`http://${GLOBAL_URL}:8080${srcIcon}`} alt='nere-shop-ico'/>
                         </div>

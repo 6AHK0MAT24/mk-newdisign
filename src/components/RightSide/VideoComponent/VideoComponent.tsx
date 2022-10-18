@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
-import testImg from './test-img.png'
+// import testImg from './test-img.png'
 import './VideoComponent.scss'
 import {GLOBAL_URL} from "../../../assets/const/CONSTANTS"
-import {log} from "util";
 
 // let mockurlToPlay = 'http://192.168.100.225:8080/sdcard/content/video/advertise/vid-1663921713042.mp4'
 
 const VideoComponent: React.FC<any> = (data) => {
-    // console.log('data.videoData - ', data.videoData.videoForPlay)
-    // console.log('data.videoData - ', data.videoData)
+    const [reloadVideo, setReloadVideo] = useState(true)
+    // console.log('data.videoData - ', data.videoData.ws)
+    console.log('data.videoData - ', data.videoData.videoForPlay)
     // const [urlForPlay, setUrlForPlay] = useState('http://194.85.217.98:8080/sdcard/content/video/showing_plan/vid-1661853390265_temp.mp4')
     // const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
 
@@ -21,6 +21,7 @@ const VideoComponent: React.FC<any> = (data) => {
         // console.log('data.videoData.videoForPlay.src- ', `http://${GLOBAL_URL}`+data.videoData.videoForPlay.src)
         // console.log('да')
         setUrlForPlay (`http://${GLOBAL_URL}:8080`+data.videoData.videoForPlay.src)
+        setReloadVideo(true)
     }
     // console.log('urlForPlay - ', urlForPlay)
     // const urlToPlay = `http://194.85.217.98:8080` + data.videoData.videoForPlay.src
@@ -36,19 +37,24 @@ const VideoComponent: React.FC<any> = (data) => {
     // const mockurlToPlay = `http://192.168.100.225:8080/sdcard/content/video/advertise/vid-1663920055700.mp4`
     const endVideo = () => {
         console.log('endVideo')
-        data.videoData.sendMessage(
-            {
-                "type": "COMPLETE",
-                "label": data.videoData.videoForPlay.label
-            }
-        )
+        console.log('Отправляем label - ', data.videoData.videoForPlay.label)
+        const videoEndedLabel = {
+            "type": "COMPLETE",
+            "label": data.videoData.videoForPlay.label
+        }
+        console.log('videoEndedLabel - ', videoEndedLabel)
+        setReloadVideo (false)
+        // data.videoData.videoForPlay.src = null
+        data.videoData.ws.send(JSON.stringify(videoEndedLabel))
+        setReloadVideo (false)
+
     }
 
 
     return (
 
         <div>
-            {data.videoData.videoForPlay.src ?
+            {data.videoData.videoForPlay.src && reloadVideo ?
                 <>
                     <video
                         width="100%" height="100%"
