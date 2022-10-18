@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import useWebSocket, { ReadyState } from 'react-use-websocket';
 import LeftSide from "./components/LeftSide/LeftSide";
 import RightSide from "./components/RightSide/RightSide";
 import {GLOBAL_URL} from "./assets/const/CONSTANTS"
@@ -8,6 +9,10 @@ import './App.scss';
 const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
 
 function App() {
+    const [socketUrl, setSocketUrl] = useState(`ws://${GLOBAL_URL}:23245`);
+    const [messageHistory, setMessageHistory] = useState([]);
+    const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
+
     const [routeInfo, setRouteInfo] = useState([])
     const [speedTS, setSpeedTS] = useState([])
     const [tempInside, setTempInside] = useState([])
@@ -20,6 +25,15 @@ function App() {
     const [showTransfer, setShowTransfer] = useState(false)
 
     const [videoForPlay, setVideoForPlay] = useState([])
+
+    useEffect(() => {
+        if (lastMessage !== null) {
+            // @ts-ignore
+            setMessageHistory((prev) => prev.concat(lastMessage));
+        }
+    }, [lastMessage, setMessageHistory]);
+    // console.log('lastMessage - ', lastMessage?.data)
+
     useEffect(() => {
         ws.addEventListener('message', (e) => {
             // console.log('Длина data - ', JSON.parse((e.data.length)))
@@ -44,11 +58,6 @@ function App() {
                     setShowTransfer(true)
                     break;
                 case 'STOP_END':
-                    // console.log('stopEnd - ', stopEnd)
-                    // console.log('JSON.parse((e.data)) - ', JSON.parse((e.data)))
-                    // if (stopEnd !==JSON.parse((e.data))){
-                    //     console.log()
-                    // }
                     setStopEnd(JSON.parse((e.data)))
                     setShowTransfer(false)
                     break;
@@ -85,6 +94,7 @@ function App() {
                 videoForPlay={videoForPlay}
                 playEmergency={playEmergency}
                 playStream={playStream}
+                sendMessage={sendMessage}
             />
         </div>
     );

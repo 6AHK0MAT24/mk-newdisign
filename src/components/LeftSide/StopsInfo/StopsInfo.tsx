@@ -1,8 +1,5 @@
 import React from 'react'
 import './StopsInfo.scss'
-// import { ROUTE, STOP_TIMES } from '../../../mockData/STOP_TIMES'
-// import { ROUTE, STOP_TIMES } from '../../../mockData/STOP_TIMES_SOCKET'
-// import { ROUTE, STOP_TIMES } from '../../../mockData/STOP_TIMES_LOAD'
 
 let STOP_TIMES: any = {
     "type":"STOP_TIMES",
@@ -60,36 +57,19 @@ let ROUTE: any = {
     ]
 }
 
-// console.log('ROUTE - ', ROUTE)
-// console.log('STOP_TIMES - ', STOP_TIMES)
+
 ROUTE.stops.map((item: { index: any }) => {
-        // routeInfo.routeInfo.stops.map((item: { index: any }) => {
-        // console.log('item - ', item)
-        // console.log('item.index - ', item.index)
-        //     console.log('STOP_TIMES.stops - ', STOP_TIMES.stops)
         const timeStop = STOP_TIMES.stops.find((ind: { index: any }) => ind.index === item.index).time
-        // console.log('timeStop - ', timeStop)
         Object.assign(item, {timeStop: timeStop});
     }
 )
 
 const StopsInfo: React.FC<any> = (routeInfo) => {
-    console.log('routeInfo.stopEnd - ', routeInfo.stopEnd)
-    // console.log('routeInfo.stopTimes.stops - ', routeInfo.stopTimes.stops)
-    // console.log('routeInfo.routeInfo.stops - ', routeInfo.routeInfo.stops)
 
     if (routeInfo.stopTimes.stops && routeInfo.routeInfo.stops) {
-        // console.log("ЕСТЬ!")
         ROUTE = routeInfo.routeInfo
         STOP_TIMES = routeInfo.stopTimes
-        // console.log('new ROUTE - ', ROUTE)
-        // console.log('new STOP_TIMES - ', STOP_TIMES)
-        // console.log('STOP_TIMES.stops - ', STOP_TIMES.stops)
         ROUTE.stops.map((item: { index: any }) => {
-                // routeInfo.routeInfo.stops.map((item: { index: any }) => {
-                // console.log('item - ', item)
-                // console.log('item.index - ', item.index)
-                //     console.log('STOP_TIMES.stops - ', STOP_TIMES.stops)
             if (STOP_TIMES.stops) {
                 const timeStop = STOP_TIMES?.stops.find((ind: { index: any }) => ind.index === item.index)
                 if(timeStop){

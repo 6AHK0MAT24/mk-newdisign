@@ -66,13 +66,16 @@ const MediaPanel: React.FC<any> = ({panelData}) => {
                 :
                 <>
                 {transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 ?
-                    <div className='nereTransferDiv'>
-                        <div className = 'onlyTransferInfo'>
+                    <div className={transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 ? 'nereTransferDiv' : 'noClass'}>
+                    {/*<div className='nereTransferDiv'>*/}
+                        <div className = {transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 ? 'onlyTransferInfo' : 'noClass'}>
+                        {/*<div className = 'onlyTransferInfo'>*/}
                             <TransferInfo
                                 transferInfoArr = {transferInfoArr}
                             />
                         </div>
-                        <div className = 'onlyNereInfo'>
+                        <div className = {transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 ? 'onlyNereInfo' : 'noClass'}>
+                        {/*<div className = 'onlyNereInfo'>*/}
                             <NereInfo
                                 nereInfoArr = {nereInfoArr}
                                 newStyles = {true}

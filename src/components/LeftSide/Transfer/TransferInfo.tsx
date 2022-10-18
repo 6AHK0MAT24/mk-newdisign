@@ -1,7 +1,7 @@
 import React from 'react'
 import './TransferInfo.scss'
-import { NERE_INFO } from '../../../mockData/NERE_INFO'
-import BussIco from '../../../assets/icons/bus.png'
+// import { NERE_INFO } from '../../../mockData/NERE_INFO'
+// import BussIco from '../../../assets/icons/bus.png'
 import {GLOBAL_URL} from "../../../assets/const/CONSTANTS";
 import { nanoid } from 'nanoid'
 
@@ -18,9 +18,9 @@ const TransferInfo: React.FC<any> = ({transferInfoArr}) => {
             {transferInfoArr ?
                 <div className="mainTransfer">{transferInfoArr.map((item: { index: any; icons: any }) =>
                     <div className='nereTransfer' key={nanoid()}>
-                        {item.icons.map((srcIcon: any, i:number) =>
+                        {item.icons.map((srcIcon: any) =>
                             <div className='icoBus icoMock' key={nanoid()}>
-                                <img src={`http://${GLOBAL_URL}:8080${srcIcon}`} alt='nere-shop-ico'/>
+                                <img className='icoSize' src={`http://${GLOBAL_URL}:8080${srcIcon}`} alt='nere-shop-ico'/>
                             </div>
                         )}
                         {/*<div className='icoBus icoMock'>*/}

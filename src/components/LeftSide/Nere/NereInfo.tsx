@@ -1,24 +1,23 @@
 import React from 'react'
 import './NereInfo.scss'
-import { ROUTE, STOP_TIMES } from '../../../mockData/STOP_TIMES'
-import { NERE_INFO } from '../../../mockData/NERE_INFO'
-import NereShopIco from '../../../assets/icons/nere-shop.png'
+// import { ROUTE, STOP_TIMES } from '../../../mockData/STOP_TIMES'
+// import { NERE_INFO } from '../../../mockData/NERE_INFO'
+// import NereShopIco from '../../../assets/icons/nere-shop.png'
 import {GLOBAL_URL} from "../../../assets/const/CONSTANTS"
+import {nanoid} from "nanoid";
 
 
 const NereInfo: React.FC<any> = ({nereInfoArr, newStyles}) => {
-    console.log('nereInfoArr - ', nereInfoArr)
-    console.log('newStyles - ', newStyles)
 
     return (
         <>
-            <div className={newStyles ? 'nere-caption new-mainNere' : 'nere-caption'}>
+            <div className={newStyles ? 'nere-caption' : 'nere-caption new-mainNere'}>
                 Рядом
             </div>
-            <div className={newStyles ? 'mainNere new-mainNere' :'mainNere'}>{nereInfoArr.map((item: { index: any; timeStop: any; name: any; icon: any;}) =>
-                <div className='nereInfo' key={item.index}>
+            <div className={newStyles ? 'mainNere' :'mainNere new-mainNere'}>{nereInfoArr.map((item: { index: any; timeStop: any; name: any; icon: any;}) =>
+                <div className='nereInfo new-nereInfo' key={nanoid()}>
                     <div className='icoNereInfo'>
-                        <img src={`http://${GLOBAL_URL}:8080${item.icon}`} alt='nere-shop-ico'/>
+                        <img className='icoSize' src={`http://${GLOBAL_URL}:8080${item.icon}`} alt='nere-shop-ico'/>
                     </div>
                     <div className= 'textInfo'
                     >
