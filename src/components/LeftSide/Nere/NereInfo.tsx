@@ -1,8 +1,5 @@
 import React from 'react'
 import './NereInfo.scss'
-// import { ROUTE, STOP_TIMES } from '../../../mockData/STOP_TIMES'
-// import { NERE_INFO } from '../../../mockData/NERE_INFO'
-// import NereShopIco from '../../../assets/icons/nere-shop.png'
 import {GLOBAL_URL} from "../../../assets/const/CONSTANTS"
 import {nanoid} from "nanoid";
 
