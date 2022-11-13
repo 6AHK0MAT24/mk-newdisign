@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import useWebSocket, { ReadyState } from 'react-use-websocket';
+import useWebSocket from 'react-use-websocket';
 import LeftSide from "./components/LeftSide/LeftSide";
 import RightSide from "./components/RightSide/RightSide";
 import {GLOBAL_URL} from "./assets/const/CONSTANTS"
 import './App.scss';
 
-// const ws = new WebSocket('ws://192.168.100.225:23245')
 const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
 
 // ws.onmessage = (event) => {
@@ -14,9 +13,9 @@ const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
 
 
 function App() {
-    const [socketUrl, setSocketUrl] = useState(`ws://${GLOBAL_URL}:23245`);
-    const [messageHistory, setMessageHistory] = useState([]);
-    const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
+    const [socketUrl] = useState(`ws://${GLOBAL_URL}:23245`);
+    const [, setMessageHistory] = useState([]);
+    const { sendMessage, lastMessage} = useWebSocket(socketUrl);
 
     const [routeInfo, setRouteInfo] = useState([])
     const [speedTS, setSpeedTS] = useState([])
@@ -75,9 +74,9 @@ function App() {
                 setPlayStream(JSON.parse((lastMessage?.data)))
                 break;
             default:
-                console.log('Данных нет, ошибка сервера')
+                console.log('Данных нет, либо формат данных не верен.')
         }
-    },[])
+    },[lastMessage?.data])
 
     useEffect(() => {
         ws.addEventListener('message', (e) => {

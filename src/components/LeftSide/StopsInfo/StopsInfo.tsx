@@ -1,6 +1,7 @@
 import React from 'react'
 import './StopsInfo.scss'
 
+
 let STOP_TIMES: any = {
     "type": "STOP_TIMES",
     "stops": [
@@ -41,7 +42,6 @@ let ROUTE: any = {
     ]
 }
 
-
 ROUTE.stops.map((item: { index: any }) => {
         const timeStop = STOP_TIMES.stops.find((ind: { index: any }) => ind.index === item.index).time
         Object.assign(item, {timeStop: timeStop});
@@ -58,6 +58,8 @@ const StopsInfo: React.FC<any> = (routeInfo) => {
                     const timeStop = STOP_TIMES?.stops.find((ind: { index: any }) => ind.index === item.index)
                     if (timeStop) {
                         Object.assign(item, {timeStop: timeStop.time});
+                    } else {
+                        Object.assign(item, {timeStop: -1});
                     }
 
                 }
@@ -65,12 +67,15 @@ const StopsInfo: React.FC<any> = (routeInfo) => {
             }
         )
 
+        // @ts-ignore
+        ROUTE.stops = ROUTE.stops.filter((n: { timeStop: null }) => n.timeStop >= 0).slice(0, 4);
     }
 
     return (
         <>
             <div
                 className="mainTrip">{ROUTE.stops.map((item: { index: any; timeStop: any; nameRus: any; nameEng: any }) =>
+                // className="mainTrip">{newArr.stops.map((item: { index: any; timeStop: any; nameRus: any; nameEng: any }) =>
                 <div className='tripInfo' key={item.index}>
                     {item.timeStop && routeInfo.stopEnd && item.index >= routeInfo.stopEnd.index ?
                         <>

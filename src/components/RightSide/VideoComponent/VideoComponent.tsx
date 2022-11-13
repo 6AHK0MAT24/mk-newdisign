@@ -22,7 +22,7 @@ const VideoComponent: React.FC<any> = (data) => {
 
 
     return (
-        <div>
+        <div className="videoCenter">
             {data.videoData.videoForPlay.src && reloadVideo ?
                 <>
                     <video
