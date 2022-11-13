@@ -36,7 +36,7 @@ const TopValueInfo: React.FC<any> = ({speedInfo, tempInfo}) => {
             <div className='topTime'>{formatTime(dateNow)}</div>
             <div className='topDate'>{formatDate(dateNow)}</div>
             <div className='topSpeed'>{speedInfo.speed} км/ч</div>
-            <div className='topTemp'>+ {tempInfo.temperature}° в салоне</div>
+            <div className='topTemp'>{tempInfo.temperature}° в салоне</div>
         </div>
     )
 }

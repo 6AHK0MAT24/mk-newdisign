@@ -8,7 +8,7 @@ import {nanoid} from "nanoid";
 const BottomInfo: React.FC<any> = (routeInfo) => {
     let lastStop = null
 
-    if (routeInfo.routeInfo.stops){
+    if (routeInfo.routeInfo.stops && routeInfo.routeInfo.stops.length > 0){
         lastStop = routeInfo.routeInfo.stops.reduce((acc: { index: number }, curr: { index: number }) => acc.index > curr.index ? acc : curr);
 
     }
@@ -16,7 +16,7 @@ const BottomInfo: React.FC<any> = (routeInfo) => {
     const urlToIcon = `http://${GLOBAL_URL}:8080` + routeInfo.routeInfo.icon
     return (
         <>
-            {lastStop ?
+            {lastStop && routeInfo.routeInfo.stops.length > 0 ?
                 <div className='bottomInfo'>
                     <div className='tripId'>
                         <div className='tripIdText'>
