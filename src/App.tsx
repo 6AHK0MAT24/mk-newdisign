@@ -5,7 +5,9 @@ import RightSide from "./components/RightSide/RightSide";
 import {GLOBAL_URL} from "./assets/const/CONSTANTS"
 import './App.scss';
 
-const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
+console.log('window.location - ', window.location.hostname)
+// const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
+const ws = new WebSocket(`ws://${window.location.hostname}:23245`)
 
 // ws.onmessage = (event) => {
 //     console.log("Получены данные " + event.data)
