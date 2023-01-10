@@ -1,22 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './BottomInfo.scss'
-// import iconM from '../../../assets/icons/m.png'
-// import icon9 from '../../../assets/icons/9.png'
 import {GLOBAL_URL} from "../../../assets/const/CONSTANTS"
 import {nanoid} from "nanoid";
 
 const BottomInfo: React.FC<any> = (routeInfo) => {
+    const [urlToIcon, setUrlToIcon] = useState(`http://${GLOBAL_URL}:8080` + routeInfo.routeInfo.icon)
     let lastStop = null
 
     if (routeInfo.routeInfo.stops && routeInfo.routeInfo.stops.length > 0){
         lastStop = routeInfo.routeInfo.stops.reduce((acc: { index: number }, curr: { index: number }) => acc.index > curr.index ? acc : curr);
-
     }
 
-    const urlToIcon = `http://${GLOBAL_URL}:8080` + routeInfo.routeInfo.icon
+    if (routeInfo.routeInfo.icon && urlToIcon !== `http://${GLOBAL_URL}:8080` + routeInfo.routeInfo.icon) {
+        setUrlToIcon (`http://${GLOBAL_URL}:8080` + routeInfo.routeInfo.icon)
+    }
     return (
         <>
-            {lastStop && routeInfo.routeInfo.stops.length > 0 ?
+            {lastStop && routeInfo.routeInfo.stops.length > 0 && urlToIcon !== undefined ?
                 <div className='bottomInfo'>
                     <div className='tripId'>
                         <div className='tripIdText'>
@@ -30,8 +30,6 @@ const BottomInfo: React.FC<any> = (routeInfo) => {
                                     <img src={`http://${GLOBAL_URL}:8080${srcIcon}`} alt='nere-shop-ico'/>
                                 </div>
                             )}
-                            {/*<img className="metroIcon" src={iconM}  alt='icon'/>*/}
-                            {/*<img className="numberIcon" src={icon9}  alt='icon'/>*/}
                             {lastStop ? lastStop.nameRus : 'Данные загружаются'}
                             {lastStop.iconsAfter.map((srcIcon: any) =>
                                 <div className='icoBus icoMock' key={nanoid()}>
@@ -49,5 +47,4 @@ const BottomInfo: React.FC<any> = (routeInfo) => {
         </>
     )
 }
-
 export default BottomInfo;

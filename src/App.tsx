@@ -5,13 +5,13 @@ import RightSide from "./components/RightSide/RightSide";
 import {GLOBAL_URL} from "./assets/const/CONSTANTS"
 import './App.scss';
 
-console.log('window.location - ', window.location.hostname)
-// const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
-const ws = new WebSocket(`ws://${window.location.hostname}:23245`)
+const ws = new WebSocket(`ws://${GLOBAL_URL}:23245`)
+// const ws = new WebSocket(`ws://${window.location.hostname}:23245`)
 
 // ws.onmessage = (event) => {
 //     console.log("Получены данные " + event.data)
 // };
+console.log('Для проверки работы ws можно протестировать по URL - ', `ws://${GLOBAL_URL}:23245`)
 
 
 function App() {
@@ -40,45 +40,45 @@ function App() {
     }, [lastMessage, setMessageHistory]);
     // console.log('lastMessage - ', lastMessage?.data)
 
-    useEffect(()=>{
-        switch (lastMessage?.data.type) {
-            case 'ROUTE':
-                console.log('lastMessage?.data.type')
-                setRouteInfo(JSON.parse((lastMessage?.data)))
-                break;
-            case 'SPEED':
-                setSpeedTS(JSON.parse((lastMessage?.data)))
-                break;
-            case 'TEMPERATURE':
-                setTempInside(JSON.parse((lastMessage?.data)))
-                break;
-            case 'STOP_TIMES':
-                setStopTimes(JSON.parse((lastMessage?.data)))
-                break;
-            case 'STOP_BEGIN':
-                setStopBegin(JSON.parse((lastMessage?.data)))
-                setShowTransfer(true)
-                break;
-            case 'STOP_END':
-                setStopEnd(JSON.parse((lastMessage?.data)))
-                setShowTransfer(false)
-                break;
-            case 'TIMER_SYNC_INFO':
-                setTimeSync(JSON.parse((lastMessage?.data)))
-                break;
-            case 'PLAY_VIDEO':
-                setVideoForPlay(JSON.parse((lastMessage?.data)))
-                break;
-            case 'PLAY_EMERGENCY':
-                setPlayEmergency(JSON.parse((lastMessage?.data)))
-                break;
-            case 'PLAY_STREAM':
-                setPlayStream(JSON.parse((lastMessage?.data)))
-                break;
-            default:
-                console.log('Данных нет, либо формат данных не верен.')
-        }
-    },[lastMessage?.data])
+    // useEffect(()=>{
+    //     switch (lastMessage?.data.type) {
+    //         case 'ROUTE':
+    //             console.log('lastMessage?.data.type')
+    //             setRouteInfo(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         case 'SPEED':
+    //             setSpeedTS(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         case 'TEMPERATURE':
+    //             setTempInside(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         case 'STOP_TIMES':
+    //             setStopTimes(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         case 'STOP_BEGIN':
+    //             setStopBegin(JSON.parse((lastMessage?.data)))
+    //             setShowTransfer(true)
+    //             break;
+    //         case 'STOP_END':
+    //             setStopEnd(JSON.parse((lastMessage?.data)))
+    //             setShowTransfer(false)
+    //             break;
+    //         case 'TIMER_SYNC_INFO':
+    //             setTimeSync(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         case 'PLAY_VIDEO':
+    //             setVideoForPlay(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         case 'PLAY_EMERGENCY':
+    //             setPlayEmergency(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         case 'PLAY_STREAM':
+    //             setPlayStream(JSON.parse((lastMessage?.data)))
+    //             break;
+    //         default:
+    //             console.log('Данных нет, либо формат данных не верен.')
+    //     }
+    // },[lastMessage?.data])
 
     useEffect(() => {
         ws.addEventListener('message', (e) => {

@@ -12,23 +12,13 @@ const TopValueInfo: React.FC<any> = ({speedInfo, tempInfo}) => {
         let mm: any = date.getMonth() + 1;
         if (mm < 10) mm = '0' + mm;
 
-        let yy:any = date.getFullYear() % 100;
+        let yy: any = date.getFullYear() % 100;
         if (yy < 10) yy = '0' + yy;
 
         return dd + '.' + mm + '.' + yy;
     }
 
-    // function formatTime(date: Date) {
-    //     let HH: any = date.getHours();
-    //     if (HH < 10) HH = HH + '0';
-    //
-    //     let MM: any = date.getMinutes();
-    //     if (MM < 10) MM = MM + '0';
-    //
-    //     return HH + ':' + MM;
-    // }
-
-    function newTime (date: Date) {
+    function newTime(date: Date) {
         return [date.getHours(), date.getMinutes()].map(function (x) {
             return x < 10 ? "0" + x : x
         }).join(":")
@@ -40,10 +30,12 @@ const TopValueInfo: React.FC<any> = ({speedInfo, tempInfo}) => {
     return (
         <div className='topInfo'>
             <div className='topTime'>{newTime(dateNow)}</div>
-            {/*<div className='topTime'>{formatTime(dateNow)}</div>*/}
             <div className='topDate'>{formatDate(dateNow)}</div>
             <div className='topSpeed'>{speedInfo.speed} км/ч</div>
-            <div className='topTemp'>{tempInfo.temperature}° в салоне</div>
+            {tempInfo && tempInfo.temperature !== undefined ?
+                <div className='topTemp'>{tempInfo.temperature}° в салоне</div>
+                :
+                null}
         </div>
     )
 }

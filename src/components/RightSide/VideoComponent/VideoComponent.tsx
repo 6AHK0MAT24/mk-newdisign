@@ -9,6 +9,7 @@ const VideoComponent: React.FC<any> = (data) => {
         setUrlForPlay(`http://${GLOBAL_URL}:8080` + data.videoData.videoForPlay.src)
         setReloadVideo(true)
     }
+    // console.log("Video URL - ", `http://${GLOBAL_URL}:8080` + data.videoData.videoForPlay.src)
     const endVideo = () => {
         const videoEndedLabel = {
             "type": "COMPLETE",
