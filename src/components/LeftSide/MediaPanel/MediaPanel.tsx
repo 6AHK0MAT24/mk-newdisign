@@ -11,23 +11,24 @@ import TransferInfo from "../Transfer/TransferInfo";
 
 let nereInfoArr: any = null
 let transferInfoArr: any = null
-let isNereTransfer = false
+let isNereTransfer = true
 
 const MediaPanel: React.FC<any> = ({panelData}) => {
+
     if (panelData.stopBegin){
-        if (panelData.routeInfo.stops[panelData.stopBegin.index]) {
-            nereInfoArr = panelData.routeInfo.stops[panelData.stopBegin.index].poi
-            transferInfoArr = panelData.routeInfo.stops[panelData.stopBegin.index].transfers
-            isNereTransfer = false
-        }
-        else {
-            isNereTransfer = true
+
+        const stopInfo = panelData.routeInfo.stops.find((stop: { index: number; }) => stop.index === panelData.stopBegin.index)
+        isNereTransfer = stopInfo !== undefined
+        if (isNereTransfer) {
+            nereInfoArr = stopInfo.poi
+            transferInfoArr = stopInfo.transfers
+
         }
     }
     return (
         <div className="leftPanel">
 
-            {!panelData.showTransfer || isNereTransfer ?
+            {!panelData.showTransfer ?
                 <>
                     <TopValueInfo
                         speedInfo={panelData.speedTS}
@@ -45,7 +46,7 @@ const MediaPanel: React.FC<any> = ({panelData}) => {
 
                 :
                 <>
-                {transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 && isNereTransfer ?
+                {transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 ?
                     <div className={transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 ? 'nereTransferDiv' : 'noClass'}>
                         <div className = {transferInfoArr &&  transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length > 0 ? 'onlyTransferInfo' : 'noClass'}>
                             <TransferInfo
@@ -67,18 +68,24 @@ const MediaPanel: React.FC<any> = ({panelData}) => {
                         routeInfo={panelData.routeInfo}
                         stopBegin = {panelData.stopBegin}
                     />
-                    {nereInfoArr && nereInfoArr.length > 0 && transferInfoArr && transferInfoArr.length === 0 && isNereTransfer ?
-                        <NereInfo
-                            nereInfoArr = {nereInfoArr}
-                            newStyles = {false}
-                        />
+                    {nereInfoArr && nereInfoArr.length > 0 && transferInfoArr && transferInfoArr.length === 0 ?
+                        <>
+                            <NereInfo
+                                nereInfoArr = {nereInfoArr}
+                                newStyles = {false}
+                            />
+                        </>
+
                         :
                         null
                     }
-                    {transferInfoArr && transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length === 0 && isNereTransfer ?
-                        <TransferInfo
-                            transferInfoArr = {transferInfoArr}
-                        />
+                    {transferInfoArr && transferInfoArr.length > 0 && nereInfoArr && nereInfoArr.length === 0 ?
+                        <>
+                            <TransferInfo
+                                transferInfoArr = {transferInfoArr}
+                            />
+                        </>
+
                         :
                         null
                     }

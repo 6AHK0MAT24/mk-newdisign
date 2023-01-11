@@ -8,7 +8,12 @@ let currentStop: any = null
 const TopTextInfo: React.FC<any> = (routeInfo) => {
 
     if (routeInfo.routeInfo && routeInfo.stopBegin) {
-        currentStop = routeInfo.routeInfo.stops[routeInfo.stopBegin.index]
+        // console.log('routeInfo.routeInfo.stops - ', routeInfo.routeInfo.stops)
+        // console.log('routeInfo.stopBegin - ', routeInfo.stopBegin)
+
+        // const stopInfo = panelData.routeInfo.stops.find((stop: { index: number; }) => stop.index === panelData.stopBegin.index)
+
+        currentStop = routeInfo.routeInfo.stops.find((stop: {index: number}) => stop.index === routeInfo.stopBegin.index)
     }
     return (
         <>

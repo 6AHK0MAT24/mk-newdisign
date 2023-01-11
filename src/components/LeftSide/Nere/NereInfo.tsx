@@ -5,6 +5,7 @@ import {nanoid} from "nanoid";
 
 
 const NereInfo: React.FC<any> = ({nereInfoArr, newStyles}) => {
+    // console.log('NereInfo')
 
     return (
         <>
