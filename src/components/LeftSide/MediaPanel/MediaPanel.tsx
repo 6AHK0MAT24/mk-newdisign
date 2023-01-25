@@ -8,7 +8,6 @@ import TopTextInfo from "../TopTextInfo/TopTextInfo";
 import NereInfo from "../Nere/NereInfo";
 import TransferInfo from "../Transfer/TransferInfo";
 
-
 let nereInfoArr: any = null
 let transferInfoArr: any = null
 let isNereTransfer = true
